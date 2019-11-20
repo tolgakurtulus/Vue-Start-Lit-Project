@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Vue Start!</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    
+    <div id = "app">
+        <h1>{{ title }}</h1>
+        <button>{{ buttontitle }}</button>
+        <p>{{ parag }}</p>
+        <p v-text = "parag" v-bind:data-id="dataId"></p>
+        <a v-bind:href ="link">Hediyelik Karakalem</a>
+        <p v-html="detail"></p>
+        
+    </div>
+    
+
+    <script>
+        
+        new Vue({
+            
+            el : "#app",
+            data : {
+            
+                title : "Vue Test",
+                buttontitle : "Deneme Vue",
+                parag : "Lorem Ipsum",
+                link : "https://www.hediyelikkarakalem.com/",
+                dataId : "1",
+                detail : "<b>We write BOLD</b>"
+        }
+            
+            
+            
+            
+            
+        });
+    
+    
+    </script>
+
+
+</body>
+</html>

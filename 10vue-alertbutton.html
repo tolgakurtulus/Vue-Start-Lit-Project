@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Vue Start!</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      
+    <style>
+        
+        .box{
+            
+            width: 200px;
+            height: 100px;
+            border: 2px solid #333;
+            background-color: aqua;
+            margin-bottom: 5px;
+        }
+        
+        .pink{
+
+            background-color: fuchsia;
+        }
+        
+        ul{
+            
+            margin :0px;
+            margin-top: 10px;
+            padding: 0px;
+            list-style-type: none;
+            width: 300px;
+        }
+
+        li{
+
+            padding: 5px 5px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid whitesmoke;
+            text-align: left; 
+        }
+
+        .red{
+
+            background-color: red;
+        
+        }
+
+        .yellow{
+
+            background-color: darkorange;
+        }
+      
+      
+      
+      
+    </style>  
+
+     
+      
+      
+      
+      
+</head>
+<body>
+    
+    <div id = "app">
+        
+        
+        <li>{{ list }}</li>
+        <hr>
+        <li v-for="i in list">Zero</li>
+        <hr>
+        <li v-for="i in list">{{ list }}</li>
+        <hr>
+        <li v-for="i in list">{{ i }}</li>
+        <hr>
+        <li v-for="i in list" v-text="i"></li>
+        <hr>
+        <li v-for="item in list">{{ item }}</li>
+        <hr>
+        <li v-for="item in 10">{{ item }}</li>
+        <hr>
+        
+        <div v-for="p in personel">{{ p }}</div>
+        <hr>
+        <div v-for="(value,key) in personel">{{ key + " : " + value }}</div>
+        <hr>
+        <div v-for="(value,key) in personel"><strong>{{ key }}</strong>{{":" + value }}</div>
+        <hr>
+        <ul>
+            <li v-for="product in productlist">{{ product }}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="product in productlist">{{ product.title }}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="product in productlist">{{ product.title }} - {{ product.count }}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="product in productlist" v-if="product.count > 0">{{ product.title }} - {{ product.count }}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="product in productlist">
+                <span>{{ product.title }} - {{ product.count }}</span>
+                <button @click = "product.count--">Sell Sell</button>
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="product in productlist">
+                <span>{{ product.title }} - {{ product.count }}</span>
+                <button @click = "product.count-=50">Sell Sell</button>
+            </li>
+        </ul>
+        <hr>
+        1. Way Pcs : <input type="text" v-model="sellc">
+        <ul>
+            <li v-for="product in productlist">
+                <span>{{ product.title }} - {{ product.count }}</span>
+                <button @click = "product.count = product.count - sellc">Sell Sell</button>
+            </li>
+        </ul>
+        <hr>
+        2. Way Pcs : <input type="text" v-model="sellc">
+        <ul>
+            <li v-for="product in productlist">
+                <span>{{ product.title }} - {{ product.count }}</span>
+                <button @click = "sellproduct(product)">Sell Sell</button>
+            </li>
+        </ul>
+        <hr>
+        Disabled Pcs : <input type="text" v-model="sellc">
+        <ul>
+            <li v-for="product in productlist">
+                <span>{{ product.title }} - {{ product.count }}</span>
+                <button :disabled="product.count ==0"  @click = "sellproduct(product)">Sell Sell</button>
+            </li>
+        </ul>
+        <hr>
+        1. Way Color Pcs : <input type="text" v-model="sellc">
+        <ul>
+            <li v-for="product in productlist" :class="{'yellow' : product.count > 0, 'red' : product.count <=0}">
+                <span>{{ product.title }} - {{ product.count }}</span>
+                <button :disabled="product.count ==0"  @click = "sellproduct(product)">Sell Sell</button>
+            </li>
+        </ul>
+        <hr>
+        2. Way Color Pcs : <input type="text" v-model="sellc">
+        <ul>
+            <li v-for="product in productlist" :class="productbackgroundforsell(product)">
+                <span>{{ product.title }} - {{ product.count }}</span>
+                <button :disabled="product.count ==0"  @click = "sellproduct(product)">Sell Sell</button>
+            </li>
+        </ul>
+        <hr>
+        Alert Sentences Pcs : <input type="text" v-model="sellc">
+        <ul>
+            <li v-for="product in productlist" :class="productbackgroundforsell(product)">
+                <span>{{ product.title }} - {{ product.count }}</span>
+                <button :disabled="product.count ==0"  @click = "sellproduct(product)">Sell Sell</button>
+            </li>
+        </ul>
+        <p v-if="sellwarning" style="color:red; font-weight: bold;">There are not that you want</p>
+        
+        
+        
+        
+        
+        
+        
+    </div>
+    
+
+    <script>
+        
+        new Vue({
+            
+            el : "#app",
+            data : {
+            
+                list : ["pink", "blue", "black"],
+                personel : {
+                    
+                    name:"Tolga",
+                    surname:"Kurtuluş",
+                    age:"25",
+                    sellc:"0",
+                    sellwarning : false 
+                    
+                },
+                
+                productlist : [
+                    
+                    
+                    {
+                        title: "Samsung",
+                        price: "2000",
+                        count: "1000"
+                        
+                    },
+                    {
+                        title: "Xiomi",
+                        price: "1500",
+                        count: "2000"
+                        
+                    },
+                    {
+                        title: "Apple",
+                        price: "8000",
+                        count: "0"
+                        
+                    }
+                    
+                ]
+            },
+            
+            methods : {
+                
+                sellproduct(product){
+                    if(this.sellc > product.count){
+
+                        this.sellwarning = true
+                    }
+
+                    else{
+
+                        product.count = product.count - this.sellc
+                        this.sellwarning = false
+                    }
+
+
+                    
+                },
+
+
+                productbackgroundforsell(product){
+
+                    return {'yellow' : product.count > 0, 'red' : product.count <=0}
+
+
+
+
+                }
+
+            }
+            
+            
+            
+        });
+    
+    
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Vue Start!</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      
+    <style>
+        
+        .box{
+            
+            width: 200px;
+            height: 100px;
+            border: 2px solid #333;
+            background-color: aqua;
+            margin-bottom: 5px;
+        }
+        
+        .pink{
+            
+            
+            background-color: fuchsia;
+        }
+      
+      
+      
+      
+    </style>  
+
+     
+      
+      
+      
+      
+</head>
+<body>
+    
+    <div id = "app">
+        
+        <p v-if="showp">Opening sentences</p>
+        <p v-else-if="!showp">Close sentences</p>
+        <p v-else>Other sentences</p>
+        
+        
+        <button @click="showp = !showp"> {{ write }} </button>
+    </div>
+    
+
+    <script>
+        
+        new Vue({
+            
+            el : "#app",
+            data : {
+            
+                classcolor : "pink",
+                write :"Renk Değiştir",
+                showp :false,
+            },
+            
+            
+            
+        });
+    
+    
+    </script>
+
+
+</body>
+</html>

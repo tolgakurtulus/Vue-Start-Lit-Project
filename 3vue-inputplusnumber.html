@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Vue Start!</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    
+    <div id = "app">
+        <input type="text" @keypress.enter="inputplus($event)"/>
+        <button v-on:click="plus()">{{ write }}</button>
+        <p>{{ number }}</p>
+        
+    </div>
+    
+
+    <script>
+        
+        new Vue({
+            
+            el : "#app",
+            data : {
+            
+                number : 1,
+                write :"Plus Plus"
+        },
+            methods : {
+                
+                plus(){
+                    
+                    this.number++;
+                },
+                
+                
+                inputplus(e){
+                    
+                        
+                        this.number += parseInt(e.target.value)
+                    
+                }
+                
+            }
+            
+            
+            
+            
+            
+        });
+    
+    
+    </script>
+
+
+</body>
+</html>

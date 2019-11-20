@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Vue Start!</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    
+    <div id = "app">
+        <input type="text" v-model="age"/>
+        <p> Js : {{ age >= 18 ? 'Reşit' : 'Değil' }} </p>
+        <p> Method : {{ findagem() }} </p>
+        <p> Computed : {{ findagec }} </p>
+        <button @click="plus()"> {{ write }} </button>
+    </div>
+    
+
+    <script>
+        
+        new Vue({
+            
+            el : "#app",
+            data : {
+            
+                number : 1,
+                write :"Plus Plus",
+                age : 0
+            },
+            methods : {
+                
+                plus(){
+                    
+                    this.age++;
+                },
+                
+                findagem(){
+                    
+                    console.log("Methods Working")
+                    return this.age >= 18 ? 'Reşit' : 'Değil'
+                }
+                
+            },
+            
+            
+            computed : {
+                
+                findagec(){
+                    
+                    console.log("Computed Working")
+                    return this.age >= 18 ? 'Reşit' : 'Değil'
+                }
+            },
+            
+            watch : {
+                
+                age(newvalue,oldvalue){
+                    
+                    console.log("New :" + newvalue )
+                    console.log("Old :" + oldvalue )
+                }
+            }
+            
+            
+            
+            
+            
+        });
+    
+    
+    </script>
+
+
+</body>
+</html>

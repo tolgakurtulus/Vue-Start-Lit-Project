@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Vue Start!</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    
+    <div id = "app">
+        <input type="text" v-model="number"/>
+        <p>{{ number }}</p>
+        <button @click="plus()">{{ write }}</button>
+    </div>
+    
+
+    <script>
+        
+        new Vue({
+            
+            el : "#app",
+            data : {
+            
+                number : 1,
+                write :"Plus Plus"
+        },
+            methods : {
+                
+                plus(){
+                    
+                    this.number++;
+                }
+                
+                
+            }
+            
+            
+            
+            
+            
+        });
+    
+    
+    </script>
+
+
+</body>
+</html>
